@@ -15,3 +15,4 @@ http.createServer((req,res) => {
 //res.writeHead(): 응답에 대한 정보를 기록하는 함수
 //res.write(): 파라미터로 클라이언트에 보낼 데이터를 넣어줌
 //res.end(): 응답을 종료하는 메서드.
+
