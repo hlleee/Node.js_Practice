@@ -53,20 +53,22 @@ app.put('/board', (req,res) => {    //PUT : 데이터를 변경합니다(UPDATE)
 
    const board = {     //리스트에 새로운 요소 추가
     "id": +req.params.id,
-    "user_id":req.params.user_id,
+    "user_id":req.params.user_id, //req.params.user_id를 새로운 id로 한 새로운 게시글 데이터를 생성해 저장
     "date": new Date(),
     "title":req.body.title,
     "content":req.body.content
     };
-    boardList.push(board);
+    boardList.push(board);  //board라는 새로운 게시글 데이터를 boardList에 저장!
 
     res.redirect('/board');
 });
 
-app.delete('/board/:id', (req,res) => {
+
+//delete메서드로 /board/:id 요청이 들어오면 :id값과 동일한 boardList를 삭제하는 코드.
+app.delete('/board/:id', (req,res) => { 
     //res.params.id 값 찾아 리스트에서 삭제
-    const findItem = boardList.find((item) => {
-        return item.is == +req.params.id
+    const findItem = boardList.find((item) => { //찾기
+        return item.id == +req.params.id
     });
 
     const idx = boardList.indexOf(findItem);
