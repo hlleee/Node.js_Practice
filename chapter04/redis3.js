@@ -79,6 +79,9 @@ app.get('/airkorea', async (req, res) => {
                 airItems.forEach((val) => {
                     client.rpush('airItems', val); // redis에 저장
                 });
+
+                //Redis는 .expire() 함수를 통해 데이터의 유효시간을 정해줌.
+                //60*60은 60분이라는 뜻.                
                 client.expire('airItems', 60 * 60);
 
                 res.send(`캐시된 데이터가 없습니다.`);

@@ -13,7 +13,7 @@ const getHtml = async () => {
     }
 };
 
-getHtml() //크롤링 할때 페이지의 코드 가죠오기.
+getHtml() //크롤링 할때 페이지의 코드 가져오기.
     .then(html => {
         let ulList = []; //ul의 리스트 ulList에 담깊
         //받은 html 데이터를 cheerio 객체로 변환하고 $변수 안에 넣어준다.
@@ -30,7 +30,8 @@ getHtml() //크롤링 할때 페이지의 코드 가죠오기.
             };
         });
 
-        const data = ulList.filter(n => n.bookList);
+        const data = ulList.filter(n => n.bookList); //filter : 특정 조건을 만족하는 값만 반환받기를 원할 때
+        //bookList에 n을 거르기
         return data;
     })
     //만들어준 ulList를 콘솔에 출력.

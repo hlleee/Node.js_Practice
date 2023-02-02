@@ -1,3 +1,4 @@
+
 const morgan = require('morgan');
 const request = require('request');
 const express = require('express');
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/naver/news', (req, res) => {
     const client_id = 'Vzl8nwi5cywWhCnuNBxJ';
     const client_secret = 'fm6ZtzF_8f';
-    const api_url = 'https://openapi.naver.com/v1/search/blog?query=' + encodeURI('코스피'); //encodeURI(req.query.query);
+    const api_url = 'https://openapi.naver.com/v1/search/news?query=' + encodeURI('코스피'); //encodeURI(req.query.query);
     const option = {
     };
     const options = {
