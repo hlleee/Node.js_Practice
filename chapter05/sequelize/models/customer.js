@@ -1,4 +1,5 @@
 //customer 객체를 ORM으로 작성하기
+//MYSQL에서 생성한 테이블을 sequelize ORM으로 작성한 예시.
 
 module.exports = (sequelize, DataTypes) => {
     const newCustomer = sequelize.define("new_customer", { //테이블 이동
