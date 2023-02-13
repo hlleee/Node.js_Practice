@@ -26,7 +26,7 @@
         </form>
       </div>
     </div>
-    <div id="chat-area">
+    <div id="chat-area" style="overflow: auto">
       <div id="users-area">
         <div id="online-users-text">
           <h1>Online users:</h1>
@@ -59,20 +59,22 @@
   <script type="text/javascript">
     const socket = io();
 
-    function updateUsers(list) {
+    function updateUsers(list) { //updateUsers()는 인자로 받은 리스트의 요소를 #user 요소에 하나씩 넣어주는 함수.
       for (let i = 0; i < list.length; i++) {
-        $("#users").append("<li><b>" + list[i] + "</b></li>");
+        $("#users").append("<li><b>" + list[i] + "</b></li>"); //$("#users")는 id="users"
       }
     }
 
-    $("#login-form").submit(function (event) {
-      event.preventDefault(); // 이벤트 취소
-      if ($("#user-name").val() == "" || $("#user-name").val() == " ") {
+    $("#login-form").submit(function (event) { //#login-form 버튼을 누를때의 이벤트~
+      event.preventDefault(); // 지금까지의 이벤트 초기화.
+
+      //ex) $('input').val(); //input의 value값을 가져온다.
+      if ($("#user-name").val() == "" || $("#user-name").val() == " ") { //#user-name가 공백이거나 null일때
         alert("Invalid username");
-      } else {
+      } else { //공백이 아닐 경우
         $username = $("#user-name").val(); // get username
-        $("#login-area").hide();
-        $("#chat-area").show();
+        $("#login-area").hide(); //.hide(): 선택한 요소를 사라지게 함.
+        $("#chat-area").show();// .show(): 요소를 바로 보이게 하는 기능
 
         $("#messages").html(""); // 오래된 메세지 삭제
         socket.emit("has connected", $username);
@@ -103,7 +105,7 @@
     socket.on("has disconnected", function (data) {
       $("#users").html("");
       updateUsers(data.usersList);
-      $("#messages").append(
+      $("#messages").append( //.append()는 선택한 요소의 내용의 끝에 콘텐트를 추가합니다.
         "<li><i><b>" + data.username + "</b> has disconnected </i></li>"
       );
     });
